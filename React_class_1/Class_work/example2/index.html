@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .container {
+        color: teal;
+        font-size: 48px;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <!-- react application goes here -->
+    </div>
+    <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+
+    <script>
+      let rootElement = document.getElementById("root");
+
+      //   let element = React.createElement("div", {
+      //     className: "container",
+      //     children: "Carpe Diem",
+      //   });
+
+      //   let greeting = React.createElement("h1", {
+      //     className: "container",
+      //     children: "Cap 05",
+      //   });
+
+      let element = React.createElement(
+        "div",
+        {
+          className: "container",
+          children: "Carpe Diem",
+        },
+        "Carpe Derm"
+      );
+
+      // <div class="container">Carpe Diem</div>
+      let reactRoot = ReactDOM.createRoot(document.getElementById("root"));
+      // this reactRoot parent of all the elements that gets created using react;
+
+      reactRoot.render(element);
+      //reactRoot.render(greeting);
+      //in the root element i want to display this element i just created
+      //render is basically convert to actual DOM elemet and display it onto UI
+
+    </script>
+  </body>
+</html>
