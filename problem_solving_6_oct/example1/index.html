@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<!-- <script>
+    //let message = "Hello World";
+    function outer(){
+        let x =10;
+        function inner(){
+            console.log(x);
+        }
+        return inner;
+    }
+    let func = outer()
+    console.log(func);
+    func();
+</script> -->
+
+<script>
+    function amar(){
+        let person = {
+            name: "Raj",
+            age: 20
+        }
+        function akbar(){
+            console.log(person.name, person.age)
+        }
+        return akbar;
+    }
+    let x = amar()
+    console.log("closure:", x); // executing closure function
+    x();
+</script>

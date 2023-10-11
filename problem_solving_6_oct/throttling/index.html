@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <input id="inp" type="text" placeholder="Enter movie name" />
+      <div id="output"></div>
+   </body>
+</html>
+<script>
+   let inp = document.getElementById("inp");
+   let outputDiv = document.getElementById("output");
+
+   function performOperation(query) {
+      //   fetch(`https://www.omdbapi.com/?apikey=15a93b4e&s=${query}`)
+      //      .then((res) => res.json())
+      //      .then((data) => console.log(data))
+      //      .catch((err) => console.log(err));
+      console.log(query);
+      outputDiv.append("* ");
+   }
+
+   function throttle(func, delay) {
+      let throttling = false;
+      function inner(query) {
+         if (throttling == false) {
+            throttling = true;
+            func(query);
+            setTimeout(() => {
+               throttling = false;
+            }, delay);
+         }
+      }
+      return inner;
+   }
+
+   let throttleSearch = throttle(performOperation, 250);
+   // throttleSearch(value) = inner(query)
+
+   inp.addEventListener("input", () => {
+      let value = inp.value;
+      throttleSearch(value);
+   });
+</script>

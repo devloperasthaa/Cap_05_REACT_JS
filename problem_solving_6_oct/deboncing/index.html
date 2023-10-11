@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="inp" type="text" placeholder="Enter Movie Name" />
+    <div id="output"></div>
+  </body>
+</html>
+<script>
+  let inp = document.getElementById("inp");
+  let outputDiv = document.getElementById("output");
+
+  function perfromOperation(query){
+    //console.log(query)
+    fetch(`http://www.omdbapi.com/?apikey=d22a22de&s=${query}`)
+
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
+
+    //outputDiv.append("* ");
+  }
+  function debounce(func, delay){
+    let timer;
+    function inner(query){
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            func(query);
+        }, delay)
+    };
+    return inner;
+  }
+
+  let debouncedSearch = debounce(perfromOperation, 500);
+
+
+  inp.addEventListener("input", () => {
+    let value = inp.value;
+    debouncedSearch (value);
+  });
+</script>
