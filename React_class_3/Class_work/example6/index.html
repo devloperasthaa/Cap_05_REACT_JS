@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Haandlers related with index.html</title>
+    <style></style>
+  </head>
+  <body>
+    <div id="root">
+      <!-- react application goes here -->
+    </div>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+
+    <!-- // Step 1 : add Babel Script -->
+    <script type="text/babel">
+      function App() {
+        const [count, setCount] = React.useState(1)
+        const [text, setText] = React.useState("")
+        
+        const handleClick = () => {
+          setCount(count + 1)
+        }
+        
+         return (
+          <>
+          <h1> Count : {count}</h1>
+            <button onClick={handleClick}>Click Me $</button>
+            
+          </>
+        );
+      }
+      let domRootElement = document.getElementById("root");
+      let reactRoot = ReactDOM.createRoot(domRootElement);
+      function renderApp() {
+        reactRoot.render(<App />);
+      }
+      renderApp();
+    </script>
+  </body>
+</html>

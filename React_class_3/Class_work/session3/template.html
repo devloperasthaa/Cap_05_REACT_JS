@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Props And components</title>
+    <style>
+      .superhero-card {
+        border: 1px solid black;
+        padding: 10px;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <!-- react application goes here -->
+    </div>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+
+    <!-- // Step 1 : add Babel Script -->
+    <script type="text/babel">
+      
+      function App() {
+        return
+          <>
+          </>
+          
+          
+        
+      }
+
+      let domRootElement = document.getElementById("root");
+
+      let reactRoot = ReactDOM.createRoot(domRootElement);
+
+      // reactRoot.render(element);
+
+      reactRoot.render(<App />);
+    </script>
+  </body>
+</html>

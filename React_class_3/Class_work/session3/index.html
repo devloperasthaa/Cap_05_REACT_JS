@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Haandlers</title>
+    <style></style>
+  </head>
+  <body>
+    <div id="root">
+      <!-- react application goes here -->
+    </div>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+
+    <!-- // Step 1 : add Babel Script -->
+    <script type="text/babel">
+      const state = { count: 0, text: "" };
+
+      const setState = (newState) => {
+        Object.assign(state, newState);
+        console.log(state);
+        renderApp();
+      };
+      //   Event lisner
+      function App() {
+        const handleClick = () => {
+          setState({ count: state.count + 1 });
+        };
+        const handleChange = (event) => {
+          setState({ text: event.target.value });
+        };
+        return (
+          <>
+            <h1> Count : {state.count}</h1>
+            <button onClick={handleClick}>Click Me for count element</button>
+            <br />
+            <input onChange={handleChange} />
+          </>
+        );
+      }
+      let domRootElement = document.getElementById("root");
+      let reactRoot = ReactDOM.createRoot(domRootElement);
+      function renderApp() {
+        reactRoot.render(<App />);
+      }
+      renderApp();
+    </script>
+  </body>
+</html>
