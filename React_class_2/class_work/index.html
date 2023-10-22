@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Props And component</title>
+    <style>
+      .title {
+        color: teal;
+        letter-spacing: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <!-- react application goes here -->
+    </div>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+
+    <!-- // Step 1 : add Babel Script -->
+    <script type="text/babel">
+      //   const massageElement = (message) => {
+      //     return <div className="message">{message}</div>;
+      //   };
+      //   let element = (
+      //     <div className="main">
+      //       {messageElement("Carpe Diem")}
+      //       {messageElement("Seize of the day")}
+      //       {messageElement("Hello World")}
+      //       {messageElement("I am BAtman")}
+      //     </div>
+
+      //   );
+
+      //  use massege component
+
+    //   function MessageComponent(props) {
+    //     return <div className="message">{props.text}</div>;
+    //   }
+
+    //   function Greeting(props) {
+    //     return <h3>{props.children}</h3>;
+    //   }
+
+    //   let element = (
+    //     <div className="main">
+    //       <MessageComponent text="Carpe Diem"/>
+    //       <MessageComponent text="Size the day"/>
+    //       <MessageComponent text="Hello World"/>
+    //       <MessageComponent text="I am flashh......"/>
+    //       <Greeting> Good Evening</Greeting>
+    //     </div>
+    //   );
+
+    function App(){
+        const boxStyle = {
+            height: 150,
+            width: 150,
+            backgroundColor: "green",
+            color: "white",
+        }
+        return <div>
+            <p>Hello</p>
+            <div style={boxStyle}>Some Box</div>
+            <h3 className="title">Some Heading</h3>
+        </div>
+    }
+
+      let domRootElement = document.getElementById("root");
+
+      let reactRoot = ReactDOM.createRoot(domRootElement);
+
+     // reactRoot.render(element);
+
+     reactRoot.render(<App/>);
+    </script>
+  </body>
+</html>
+ 

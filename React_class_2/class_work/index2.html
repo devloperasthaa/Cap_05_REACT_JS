@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Props And components</title>
+    <style>
+      .superhero-card {
+        border: 1px solid black;
+        padding: 10px;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <!-- react application goes here -->
+    </div>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+
+    <!-- // Step 1 : add Babel Script -->
+    <script type="text/babel">
+      function SuperheroCard(props) {
+        //console.log(props)
+        //{name, hobbies, hasSuperHero, adress, age}
+        //{string, [], boolean, {street:" ", city:"", country:"", }, number, age}
+        return (
+          <div className="superhero-card">
+            <p>Name : {props.name}</p>
+            <p>Hobbies : {props.hobbies.join(",")}</p>
+            <p>Has Super Powers : {props.hasSuperpowers.toString()}</p>
+            <div style={{ color: "red" }}>
+              <p>Street : {props.address.street}</p>
+              <p>City : {props.address.city}</p>
+              <p>Country : {props.address.country}</p>
+            </div>
+            <p>Age : {props.age}</p>
+          </div>
+        );
+      }
+      function App() {
+        return (
+          <div>
+            <SuperheroCard
+              name="Batman"
+              hobbies={["Fighting Crime", "Buying Hotels"]}
+              hasSuperpowers={false}
+              address={{
+                street: "Arakam Street",
+                city: "gotam",
+                country: "India",
+              }}
+              age={25}
+            />
+            <SuperheroCard
+              name="SuperMan"
+              hobbies={["Fighting Crime", "Buying Hotels"]}
+              hasSuperpowers={true}
+              address={{
+                street: "Arakam Street",
+                city: "gotam",
+                country: "India",
+              }}
+              age={25}
+            />
+          </div>
+          //insted of using this long code we use this
+          // <div>
+          //   <div className="superhero-card">
+          //     <p>Name : Batman</p>
+          //     <p>Hobbies : Fighting Crime, Buying Hotels</p>
+          //     <p>Has Super Powers : false</p>
+          //     <div style={{ color: "red" }}>
+          //       <p>Street : 3rd Cross</p>
+          //       <p>City : Gotham</p>
+          //       <p>Country : USA</p>
+          //     </div>
+          //     <p>Age : 200</p>
+          //   </div>
+          //   <div className="superhero-card">
+          //     <p>Name : Batman</p>
+          //     <p>Hobbies : Fighting Crime, Buying Hotels</p>
+          //     <p>Has Super Powers : false</p>
+          //     <div style={{ color: "red" }}>
+          //       <p>Street : 3rd Cross</p>
+          //       <p>City : Gotham</p>
+          //       <p>Country : USA</p>
+          //     </div>
+          //     <p>Age : 200</p>
+          //   </div>
+          // </div>
+        );
+      }
+
+      let domRootElement = document.getElementById("root");
+
+      let reactRoot = ReactDOM.createRoot(domRootElement);
+
+      // reactRoot.render(element);
+
+      reactRoot.render(<App />);
+    </script>
+  </body>
+</html>

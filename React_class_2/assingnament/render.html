@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .avatar {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        const appElement = document.getElementById("app");
+
+        const isRounded = true; // Set this to true for a rounded avatar, or false for a normal one.
+        const hideName = true; // Set this to true to hide the name, or false to display it.
+
+        const avatarElement = document.createElement("div");
+        avatarElement.classList.add("avatar");
+
+        if (isRounded) {
+            avatarElement.style.borderRadius = "50%";
+        } else {
+            avatarElement.style.borderRadius = "1rem";
+        }
+
+        if (!hideName) {
+            const nameElement = document.createElement("h1");
+            nameElement.textContent = "John Doe"; // Replace with the actual name you want to display.
+            appElement.appendChild(nameElement);
+        }
+
+        appElement.appendChild(avatarElement);
+    </script>
+</body>
+</html>
