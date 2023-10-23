@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root">Not Rendered</div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      function App() {
+        let [taskName, nameUpdater] = React.useState("");
+        let [taskArr, arrUpdater] = React.useState([]);
+
+        function myInputChange(e) {
+          nameUpdater(e.target.value);
+        }
+        function addItem() {
+          let newTask = {
+            id: taskName + Math.random,
+            title: taskName,
+            status: false,
+          };
+          let newArr = [...taskArr, newTask];
+          arrUpdater(newArr);
+        }
+        function Del(taskId) {
+          let myNewList = taskArr.filter((task) => taskId != task.id);
+          arrUpdater(myNewList);
+        }
+        return (
+          <>
+            <div>
+              <h3>Input your task</h3>
+
+              <input
+                type="text"
+                id="myInput"
+                placeholder="Add task Name"
+                onChange={myInputChange}
+                value={taskName}
+              />
+
+              <button onClick={addItem}>Add task</button>
+            </div>
+
+            <div>
+              <h2>The task List</h2>
+              {taskArr.map((task) => (
+                <div style={{ display: "flex", gap: "15px" }}>
+                  <h4>{task.title}</h4>
+                  <p>{task.status ? "Done" : "Not Done"}</p>
+                  <button onClick={() => Del(task.id)}>Delete</button>
+                </div>
+              ))}
+            </div>
+          </>
+        );
+      }
+      const rootElement = document.getElementById("root");
+      const reactRoot = ReactDOM.createRoot(rootElement);
+      reactRoot.render(<App />);
+    </script>
+  </body>
+</html>
